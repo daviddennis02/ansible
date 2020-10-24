@@ -8,11 +8,7 @@
       yum: name='httpd' state=present
     # task 2
     - name: Ensure apache starts
-      service:
-        name:
-          - 'httpd'
-        state: started
-        enabled: yes
+      service: name='httpd' state=started  enabled=yes
 
 - hosts: webservers
   become: true
@@ -21,13 +17,9 @@
     - name: Installing services
       yum:
         name:
-          - httpd
-          - php
+          - "httpd"
+          - "php"
         state: present
       # task 2
     - name: Ensure apache starts
-      service:
-        name:
-          - httpd
-        state: started
-        enabled: yes
+      service: name="httpd" state=started  enabled=yes
